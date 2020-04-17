@@ -8,7 +8,10 @@ namespace HelloWorld.Models
         private string password = string.Empty;
         private string nameError;
         private string _passwordError = string.Empty;
-
+        public override string ToString()
+        {
+            return name;
+        }
         public string NameError
         {
             get

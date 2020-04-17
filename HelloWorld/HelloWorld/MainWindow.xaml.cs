@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.EntityFrameworkCore;
 
 namespace HelloWorld
 {
@@ -24,7 +26,12 @@ namespace HelloWorld
         public MainWindow()
         {
             InitializeComponent();
-            WindowState = WindowState.Maximized;
+            uxContainer.DataContext = user;
+            SampleContext sample = new SampleContext();
+            sample.User.Load();
+            ObservableCollection<User> users = sample.User.Local.ToObservableCollection();
+            uxList.ItemsSource = users;
+            //WindowState = WindowState.Maximized;
             uxSubmit.IsEnabled = false;
             uxContainer.DataContext = user;
         }
@@ -32,6 +39,10 @@ namespace HelloWorld
         private void uxSubmit_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show($"Submitting password: {uxPassword.Text}");
+            SecondWindow sw = new SecondWindow();
+            Application.Current.MainWindow = sw;
+            Close();
+            sw.Show();
         }
 
         private void uxThumbsUp_Click(object sender, RoutedEventArgs e)
