@@ -2,7 +2,7 @@
 
 namespace Homework2.Models
 {
-    class User : IDataErrorInfo, INotifyPropertyChanged
+    public class User : IDataErrorInfo, INotifyPropertyChanged
     {
         private string name = string.Empty;
         private string password = string.Empty;
