@@ -14,7 +14,7 @@
                 <MenuItem x:Name="uxFileChange" Header="_Modify" Click="uxFileChange_Click" Loaded="uxFileChange_Loaded" />
             </MenuItem>
         </Menu>
-        <ListView x:Name="uxContactList" Height="200" SelectionChanged="uxContactList_SelectionChanged">
+        <ListView x:Name="uxContactList" Height="200" SelectionChanged="uxContactList_SelectionChanged" MouseDoubleClick="uxContactList_MouseDoubleClick">
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem x:Name="uxContextFileNew" Header="_New" Click="uxFileNew_Click" />
@@ -27,7 +27,6 @@
                     <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="100">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Tag="Name" Click="lvUsersColumnHeader_Click">Name</GridViewColumnHeader>
-                            <GridView
                         </GridViewColumn.Header>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Email}" Width="100">

@@ -58,8 +58,7 @@ namespace ContactApp
                 LoadContacts();
             }
         }
-
-        private void uxFileChange_Click(object sender, RoutedEventArgs e)
+        private void editContact()
         {
             var window = new ContactWindow();
             window.Contact = selectedContact;
@@ -69,6 +68,11 @@ namespace ContactApp
                 App.ContactRepository.Update(window.Contact.ToRepositoryModel());
                 LoadContacts();
             }
+        }
+
+        private void uxFileChange_Click(object sender, RoutedEventArgs e)
+        {
+            editContact();
         }
 
         private void uxFileChange_Loaded(object sender, RoutedEventArgs e)
@@ -102,6 +106,11 @@ namespace ContactApp
         private void uxContactList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedContact = (ContactModel)uxContactList.SelectedValue;
+        }
+
+        private void uxContactList_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            editContact();
         }
     }
 }
