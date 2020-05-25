@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using CookBookDB;
+using CookbookDB;
 
 namespace CookBookRepository
 {
     class DatabaseManager
     {
-        private static readonly RecipesContext entities;
+        private static readonly CookbookContext entities;
         static DatabaseManager()
         {
-            entities = new RecipesContext();
+            entities = new CookbookContext();
         }
 
-        public static RecipesContext Instance
+        public static CookbookContext Instance
         {
             get { return entities; }
         }

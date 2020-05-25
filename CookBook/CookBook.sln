@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBookApp", "CookBook\CookBookApp.csproj", "{F8180B68-45E2-414A-8B4D-2A3A2184A5EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CookBookApp", "CookBook\CookBookApp.csproj", "{F8180B68-45E2-414A-8B4D-2A3A2184A5EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBookRepository", "CookBookRepository\CookBookRepository.csproj", "{360DB921-A27C-46BE-BADA-D98CC22AE0A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CookBookRepository", "CookBookRepository\CookBookRepository.csproj", "{360DB921-A27C-46BE-BADA-D98CC22AE0A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBookDB", "CookBookDB\CookBookDB.csproj", "{CD5ABCE9-4902-42CB-A25A-8D94EF4BE7C6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookbookDB", "CookbookDB\CookbookDB.csproj", "{87A3D60F-949E-4CEA-8FD2-E1A72A8EDA04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{360DB921-A27C-46BE-BADA-D98CC22AE0A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{360DB921-A27C-46BE-BADA-D98CC22AE0A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{360DB921-A27C-46BE-BADA-D98CC22AE0A4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CD5ABCE9-4902-42CB-A25A-8D94EF4BE7C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CD5ABCE9-4902-42CB-A25A-8D94EF4BE7C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CD5ABCE9-4902-42CB-A25A-8D94EF4BE7C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CD5ABCE9-4902-42CB-A25A-8D94EF4BE7C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87A3D60F-949E-4CEA-8FD2-E1A72A8EDA04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87A3D60F-949E-4CEA-8FD2-E1A72A8EDA04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87A3D60F-949E-4CEA-8FD2-E1A72A8EDA04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87A3D60F-949E-4CEA-8FD2-E1A72A8EDA04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
