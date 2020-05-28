@@ -6,4 +6,18 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CookBookRepository\CookbookRepository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="CookbookRepository">
+      <HintPath>..\CookBookRepository\bin\Debug\netcoreapp3.1\CookbookRepository.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

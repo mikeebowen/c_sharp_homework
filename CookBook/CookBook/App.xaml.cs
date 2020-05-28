@@ -13,5 +13,12 @@ namespace CookBook
     /// </summary>
     public partial class App : Application
     {
+        private static CookbookRepository.CookBookRepository cookBookRepository;
+
+        static App()
+        {
+            cookBookRepository = new CookbookRepository.CookBookRepository();
+        }
+        public static CookbookRepository.CookBookRepository CookBookRepository { get { return cookBookRepository; } }
     }
 }

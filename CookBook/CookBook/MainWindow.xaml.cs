@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CookBookApp.Models;
+using CookbookRepository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,16 @@ namespace CookBook
         public MainWindow()
         {
             InitializeComponent();
+            LoadRecipes();
+        }
+
+        private void LoadRecipes()
+        {
+            List<CookbookRepositoryRecipe> recipes = App.CookBookRepository.GetAll();
+            var rs = recipes
+                .Select(r => Recipe.ToModel(r))
+                .ToList();
+            uxListView.ItemsSource = rs;
         }
     }
 }

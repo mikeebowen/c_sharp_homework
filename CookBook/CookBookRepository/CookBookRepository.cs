@@ -5,20 +5,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CookBookRepository
+namespace CookbookRepository
 {
-    class CookBookRepository
+    public class CookBookRepository
     {
-        public static List<CookBookRepositoryRecipe> GetAll()
+        public List<CookbookRepositoryRecipe> GetAll()
         {
             return DatabaseManager.Instance.Recipe
                 .Include(rec => rec.Ingredient)
-                .Select(r => new CookBookRepositoryRecipe
+                .Select(r => new CookbookRepositoryRecipe
                 {
                     ID = r.Id,
                     Author = r.Author,
                     Directions = r.Directions,
-                    Title = r.Title
+                    Title = r.Title,
+                    Ingredients = r.Ingredient.Select(i => new CookbookRepositoryIngredient
+                    {
+                        ID = i.Id,
+                        Name = i.Name
+                    }).ToList()
                 })
                 .ToList();
         }

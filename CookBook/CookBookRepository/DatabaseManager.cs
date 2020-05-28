@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using CookbookDB;
 
-namespace CookBookRepository
+namespace CookbookRepository
 {
     class DatabaseManager
     {

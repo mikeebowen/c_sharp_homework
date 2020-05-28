@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CookBookRepository
+namespace CookbookRepository
 {
-    class Ingredient
+    public class CookbookRepositoryIngredient
     {
-        public static int ID { get; set; }
-        public static int Name { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
     }
 }
