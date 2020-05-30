@@ -3,6 +3,7 @@ using CookbookApp.Models;
 using CookbookRepository;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CookBookApp.Models
@@ -18,11 +19,25 @@ namespace CookBookApp.Models
         private static IMapper mapper = mapperConfiguration.CreateMapper();
         public CookbookRepositoryRecipe ToRepositoryModel()
         {
-            return mapper.Map<CookbookRepositoryRecipe>(this);
+            return new CookbookRepositoryRecipe()
+            {
+                ID = this.ID,
+                Title = this.Title,
+                Author = this.Author,
+                Directions = this.Directions,
+                Ingredients = this.Ingredients.Select(ing => ing.ToRepositoryModel()).ToList()
+            };
         }
         public static Recipe ToModel(CookbookRepositoryRecipe repositoryRecipe)
         {
-            return mapper.Map<Recipe>(repositoryRecipe);
+            return new Recipe()
+            {
+                ID = repositoryRecipe.ID,
+                Title = repositoryRecipe.Title,
+                Author = repositoryRecipe.Author,
+                Directions = repositoryRecipe.Directions,
+                Ingredients = repositoryRecipe.Ingredients.Select(ing => Ingredient.ToModel(ing)).ToList()
+            };
         }
     }
 }
