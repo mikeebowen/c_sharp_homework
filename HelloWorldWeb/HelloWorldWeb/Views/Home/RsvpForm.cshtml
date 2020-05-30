@@ -1,0 +1,73 @@
+﻿@model HelloWorldWeb.Models.GuestResponse
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <title>RsvpForm</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h4 class="text-center">GuestResponse</h4>
+                <hr />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4 offset-2">
+                <form asp-action="RsvpForm">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label class="control-label" for="Name">Name</label>
+                        <input class="form-control" type="text" data-val="true" data-val-required="Please enter your name" id="Name" name="Name" value="" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Phone" class="control-label"></label>
+                        <input asp-for="Phone" class="form-control" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="WillAttend" class="control-label"></label>
+                        @Html.DropDownListFor(t => t.WillAttend, new[]
+                          {
+                            new SelectListItem { Text="Yes, I'll be there", Value=bool.TrueString},
+                            new SelectListItem{Text="No, I can't come", Value=bool.FalseString},
+                          }, "Choose an option", htmlAttributes: new { @class = "form-control" })
+                        <span asp-validation-for="WillAttend" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-outline-success" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div>
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
