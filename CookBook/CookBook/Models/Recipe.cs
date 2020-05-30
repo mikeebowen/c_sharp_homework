@@ -16,6 +16,18 @@ namespace CookBookApp.Models
         public string Directions { get; set; }
         public string ImageURL { get; set; }
         public List<Ingredient> Ingredients { get; set; }
+        public string TotalPrice
+        {
+            get
+            {
+                decimal totalPrice = 0;
+                foreach (Ingredient ing in Ingredients)
+                {
+                    totalPrice += ing.Price;
+                }
+                return String.Format("{0:C}", totalPrice);
+            }
+        }
         private static MapperConfiguration mapperConfiguration = new MapperConfiguration(config => config.CreateMap<Recipe, CookbookRepositoryRecipe>().ReverseMap());
         private static IMapper mapper = mapperConfiguration.CreateMapper();
         public CookbookRepositoryRecipe ToRepositoryModel()

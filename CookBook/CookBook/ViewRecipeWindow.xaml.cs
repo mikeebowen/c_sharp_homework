@@ -1,4 +1,5 @@
-﻿using CookBookApp.Models;
+﻿using CookbookApp.Models;
+using CookBookApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -27,12 +28,7 @@ namespace CookbookApp
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            uxRecipeStackPanel.DataContext = SelectedRecipe;
-        }
-
-        private void uxButton_Click(object sender, RoutedEventArgs e)
-        {
-            string foo = "bar";
+            uxRecipeGrid.DataContext = SelectedRecipe;
         }
     }
 }
