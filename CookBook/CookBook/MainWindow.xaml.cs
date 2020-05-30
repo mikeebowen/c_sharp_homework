@@ -1,4 +1,5 @@
-﻿using CookBookApp.Models;
+﻿using CookbookApp;
+using CookBookApp.Models;
 using CookbookRepository;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace CookBook
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Recipe selectedRecipe;
         public MainWindow()
         {
             InitializeComponent();
@@ -35,6 +37,23 @@ namespace CookBook
                 .Select(r => Recipe.ToModel(r))
                 .ToList();
             uxListView.ItemsSource = rs;
+            uxView.IsEnabled = false;
+        }
+
+        private void uxListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedRecipe = (Recipe)uxListView.SelectedValue;
+            uxView.IsEnabled = selectedRecipe != null ? true : false;
+        }
+
+        private void uxView_Click(object sender, RoutedEventArgs e)
+        {
+            ViewRecipeWindow viewRecipeWindow = new ViewRecipeWindow();
+            viewRecipeWindow.SelectedRecipe = selectedRecipe;
+            if (viewRecipeWindow.ShowDialog() == true)
+            {
+
+            }
         }
     }
 }

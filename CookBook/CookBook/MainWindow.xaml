@@ -7,7 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <StackPanel>
-        <ListView x:Name="uxListView">
+        <Menu>
+            <MenuItem Name="uxView" Header="_View" Click="uxView_Click" />
+        </Menu>
+        <ListView x:Name="uxListView" SelectionChanged="uxListView_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Title}" Width="100">

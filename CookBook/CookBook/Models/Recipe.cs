@@ -8,7 +8,7 @@ using System.Text;
 
 namespace CookBookApp.Models
 {
-    class Recipe
+    public class Recipe
     {
         public int ID { get; set; }
         public string Author { get; set; }

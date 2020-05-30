@@ -8,11 +8,12 @@ using CookbookRepository;
 
 namespace CookbookApp.Models
 {
-    class Ingredient
+    public class Ingredient
     {
         public int ID { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
+        public string FormattedPrice => String.Format("{0:C}", Price);
         public string ImageURL { get; set; }
         private static MapperConfiguration mapperConfiguration = new MapperConfiguration(config => config.CreateMap<Ingredient, CookbookRepositoryIngredient>().ReverseMap());
         private static IMapper mapper = mapperConfiguration.CreateMapper();
