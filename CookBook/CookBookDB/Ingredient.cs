@@ -15,6 +15,11 @@ namespace CookbookDB
         public string Name { get; set; }
         [Column("RecipeID")]
         public int RecipeId { get; set; }
+        [Column(TypeName = "decimal(5, 2)")]
+        public decimal Price { get; set; }
+        [Column("ImageURL")]
+        [StringLength(2083)]
+        public string ImageUrl { get; set; }
 
         [ForeignKey(nameof(RecipeId))]
         [InverseProperty("Ingredient")]

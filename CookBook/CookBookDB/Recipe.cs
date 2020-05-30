@@ -23,6 +23,9 @@ namespace CookbookDB
         public string Author { get; set; }
         [Required]
         public string Directions { get; set; }
+        [Column("ImageURL")]
+        [StringLength(2083)]
+        public string ImageUrl { get; set; }
 
         [InverseProperty("Recipe")]
         public virtual ICollection<Ingredient> Ingredient { get; set; }

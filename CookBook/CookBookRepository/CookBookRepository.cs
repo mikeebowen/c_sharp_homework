@@ -19,10 +19,13 @@ namespace CookbookRepository
                     Author = r.Author,
                     Directions = r.Directions,
                     Title = r.Title,
+                    ImageURL = r.ImageUrl,
                     Ingredients = r.Ingredient.Select(i => new CookbookRepositoryIngredient
                     {
                         ID = i.Id,
-                        Name = i.Name
+                        Name = i.Name,
+                        Price = i.Price,
+                        ImageURL = i.ImageUrl
                     }).ToList()
                 })
                 .ToList();

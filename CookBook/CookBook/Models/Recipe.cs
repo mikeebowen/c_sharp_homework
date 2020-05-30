@@ -14,6 +14,7 @@ namespace CookBookApp.Models
         public string Author { get; set; }
         public string Title { get; set; }
         public string Directions { get; set; }
+        public string ImageURL { get; set; }
         public List<Ingredient> Ingredients { get; set; }
         private static MapperConfiguration mapperConfiguration = new MapperConfiguration(config => config.CreateMap<Recipe, CookbookRepositoryRecipe>().ReverseMap());
         private static IMapper mapper = mapperConfiguration.CreateMapper();
@@ -25,6 +26,7 @@ namespace CookBookApp.Models
                 Title = this.Title,
                 Author = this.Author,
                 Directions = this.Directions,
+                ImageURL = this.ImageURL,
                 Ingredients = this.Ingredients.Select(ing => ing.ToRepositoryModel()).ToList()
             };
         }
@@ -36,6 +38,7 @@ namespace CookBookApp.Models
                 Title = repositoryRecipe.Title,
                 Author = repositoryRecipe.Author,
                 Directions = repositoryRecipe.Directions,
+                ImageURL = repositoryRecipe.ImageURL,
                 Ingredients = repositoryRecipe.Ingredients.Select(ing => Ingredient.ToModel(ing)).ToList()
             };
         }
