@@ -7,15 +7,30 @@
         mc:Ignorable="d"
         Title="ViewRecipeWindow" Height="450" Width="800"
         Loaded="Window_Loaded">
-    <StackPanel x:Name="uxRecipeStackPanel">
-        <TextBlock x:Name="uxTitle" Text="{Binding Title}" />
-        <TextBlock x:Name="uxAuthor" Text="{Binding Author}" />
-        <ListView x:Name="uxIngredientList" ItemsSource="{Binding Ingredients}">
+    <Grid x:Name="uxRecipeGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0">Title: </TextBlock>
+        <TextBlock x:Name="uxTitle" Text="{Binding Title}" Grid.Row="0" Grid.Column="1" />
+        <TextBlock Grid.Row="1" Grid.Column="0">Author: </TextBlock>
+        <TextBlock x:Name="uxAuthor" Text="{Binding Author}" Grid.Row="1" Grid.Column="1" />
+        <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">Ingredients:</TextBlock>
+        <ListView x:Name="uxIngredientList" ItemsSource="{Binding Ingredients}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Ingredient" DisplayMemberBinding="{Binding Name}" />
                     <GridViewColumn Header="Price" DisplayMemberBinding="{Binding FormattedPrice}" />
-                    <GridViewColumn Header="Image">
+                    <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Image Source="{Binding ImageURL}" Height="100"/>
@@ -25,7 +40,9 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBlock x:Name="uxDirections" Text="{Binding Direcctions}" />
-        <Button x:Name="uxButton" Click="uxButton_Click">Blah</Button>
-    </StackPanel>
+        <TextBlock Grid.Row="4" Grid.Column="0">Directions</TextBlock>
+        <TextBlock x:Name="uxDirections" Text="{Binding Directions}" Grid.Row="4" Grid.Column="1" />
+        <TextBlock Grid.Row="5" Grid.Column="0" >Total Price</TextBlock>
+        <TextBlock x:Name="uxTotalPrice" Text="{Binding TotalPrice}" Grid.Row="5" Grid.Column="1" />
+    </Grid>
 </Window>
