@@ -62,7 +62,7 @@
             <TextBox x:Name="uxNewIngredientName" Grid.Row="1" Grid.Column="0" />
             <TextBox x:Name="uxNewIngredientPrice" Grid.Row="1" Grid.Column="1" />
             <TextBox x:Name="uxNewIngredientURL" Grid.Row="1" Grid.Column="2" />
-            <Button x:Name="uxNewIngredientButton" Grid.Row="1" Grid.Column="3" Content="+" />
+            <Button x:Name="uxNewIngredientButton" Grid.Row="1" Grid.Column="3" Content="+" Click="uxNewIngredientButton_Click" />
         </Grid>
         <TextBlock Grid.Row="6" Grid.Column="0">Directions</TextBlock>
         <TextBox Height="100" Width="300" TextWrapping="Wrap" x:Name="uxDirections" Text="{Binding Directions}" Grid.Row="6" Grid.Column="1" />

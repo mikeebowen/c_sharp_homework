@@ -48,10 +48,31 @@ namespace CookbookRepository
             if (originalRecipe != null)
             {
                 DatabaseManager.Instance.Entry(originalRecipe).CurrentValues.SetValues(toDatabaseRecipe(cookbookRepositoryRecipe));
+                foreach (CookbookRepositoryIngredient ing in cookbookRepositoryRecipe.Ingredients)
+                {
+                    originalRecipe.Ingredient.Add(new Ingredient
+                    {
+                        Name = ing.Name,
+                        Price = ing.Price,
+                        ImageUrl = ing.ImageURL
+                    });
+                }
                 DatabaseManager.Instance.SaveChanges();
                 return true;
             }
             return false;
+        }
+        private Ingredient saveIngredient(CookbookRepositoryIngredient cookbookRepositoryIngredient)
+        {
+            Ingredient ingredient = new Ingredient
+            {
+                Id = cookbookRepositoryIngredient.ID,
+                Name = cookbookRepositoryIngredient.Name,
+                Price = cookbookRepositoryIngredient.Price,
+                ImageUrl = cookbookRepositoryIngredient.ImageURL
+            };
+            DatabaseManager.Instance.Ingredient.Add(ingredient);
+            return ingredient;
         }
 
         private Recipe toDatabaseRecipe(CookbookRepositoryRecipe cookbookRepositoryRecipe)

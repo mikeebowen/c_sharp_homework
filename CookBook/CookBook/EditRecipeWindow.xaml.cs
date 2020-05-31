@@ -22,7 +22,6 @@ namespace CookbookApp
         public EditRecipeWindow()
         {
             InitializeComponent();
-            //ShowInTaskbar = false;
         }
         public Recipe SelectedRecipe { get; set; }
 
@@ -35,6 +34,20 @@ namespace CookbookApp
         {
             DialogResult = true;
             Close();
+        }
+
+        private void uxNewIngredientButton_Click(object sender, RoutedEventArgs e)
+        {
+            Ingredient ingredient = new Ingredient
+            {
+                Name = uxNewIngredientName.Text,
+                Price = Convert.ToDecimal(uxNewIngredientPrice.Text),
+                ImageURL = uxNewIngredientURL.Text
+            };
+            SelectedRecipe.Ingredients.Add(ingredient);
+            uxNewIngredientName.Text = "";
+            uxNewIngredientPrice.Text = "";
+            uxNewIngredientURL.Text = "";
         }
     }
 }

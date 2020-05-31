@@ -38,6 +38,7 @@ namespace CookBook
                 .ToList();
             uxListView.ItemsSource = rs;
             uxView.IsEnabled = false;
+            uxEditRecipe.IsEnabled = false;
         }
 
         private void uxListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
