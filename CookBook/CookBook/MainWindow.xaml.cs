@@ -44,6 +44,7 @@ namespace CookBook
         {
             selectedRecipe = (Recipe)uxListView.SelectedValue;
             uxView.IsEnabled = selectedRecipe != null ? true : false;
+            uxEditRecipe.IsEnabled = selectedRecipe != null ? true : false;
         }
 
         private void uxView_Click(object sender, RoutedEventArgs e)
@@ -52,7 +53,30 @@ namespace CookBook
             viewRecipeWindow.SelectedRecipe = selectedRecipe;
             if (viewRecipeWindow.ShowDialog() == true)
             {
+                
+            }
+        }
 
+        private void uxNewRecipe_Click(object sender, RoutedEventArgs e)
+        {
+            EditRecipeWindow editRecipeWindow = new EditRecipeWindow();
+            Recipe recipe = new Recipe();
+            editRecipeWindow.SelectedRecipe = recipe;
+            if (editRecipeWindow.ShowDialog() == true)
+            {
+                App.CookBookRepository.Add(selectedRecipe.ToRepositoryModel());
+                LoadRecipes();
+            }
+        }
+
+        private void uxEditRecipe_Click(object sender, RoutedEventArgs e)
+        {
+            EditRecipeWindow editRecipeWindow = new EditRecipeWindow();
+            editRecipeWindow.SelectedRecipe = selectedRecipe;
+            if (editRecipeWindow.ShowDialog() == true)
+            {
+                App.CookBookRepository.Update(selectedRecipe.ToRepositoryModel());
+                LoadRecipes();
             }
         }
     }

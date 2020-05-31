@@ -28,6 +28,10 @@ namespace CookBookApp.Models
                 return String.Format("{0:C}", totalPrice);
             }
         }
+        public Recipe()
+        {
+            Ingredients = new List<Ingredient>();
+        }
         private static MapperConfiguration mapperConfiguration = new MapperConfiguration(config => config.CreateMap<Recipe, CookbookRepositoryRecipe>().ReverseMap());
         private static IMapper mapper = mapperConfiguration.CreateMapper();
         public CookbookRepositoryRecipe ToRepositoryModel()

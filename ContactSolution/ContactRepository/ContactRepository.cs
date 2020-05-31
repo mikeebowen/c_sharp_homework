@@ -101,7 +101,6 @@ namespace ContactRepository
                 ContactPhoneNumber = contactModel.PhoneNumber,
                 ContactPhoneType = contactModel.PhoneType,
             };
-
             return contactDb;
         }
     }

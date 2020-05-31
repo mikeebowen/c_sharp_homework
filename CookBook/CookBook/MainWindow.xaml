@@ -9,6 +9,8 @@
     <StackPanel>
         <Menu>
             <MenuItem Name="uxView" Header="_View" Click="uxView_Click" />
+            <MenuItem Name="uxNewRecipe" Header="_New" Click="uxNewRecipe_Click"/>
+            <MenuItem Name="uxEditRecipe" Header="_Edit" Click="uxEditRecipe_Click" />
         </Menu>
         <ListView x:Name="uxListView" SelectionChanged="uxListView_SelectionChanged">
             <ListView.View>
