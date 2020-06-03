@@ -62,6 +62,27 @@ namespace CookbookRepository
             }
             return false;
         }
+        public bool Remove(CookbookRepositoryRecipe cookbookRepositoryRecipe)
+        {
+            IQueryable<Recipe> recipes = DatabaseManager.Instance.Recipe.Where(r => r.Id == cookbookRepositoryRecipe.ID);
+            if (recipes.Count() == 0)
+            {
+                return false;
+            }
+            Recipe recipe = recipes.First();
+            if (cookbookRepositoryRecipe.Ingredients.Count() > 0)
+            {
+                foreach (CookbookRepositoryIngredient ing in cookbookRepositoryRecipe.Ingredients)
+                {
+                    IQueryable<Ingredient> ingredients = DatabaseManager.Instance.Ingredient.Where(i => i.Id == ing.ID);
+                    DatabaseManager.Instance.Ingredient.Remove(ingredients.First());
+                }
+                DatabaseManager.Instance.SaveChanges();
+            }
+            DatabaseManager.Instance.Recipe.Remove(recipes.First());
+            DatabaseManager.Instance.SaveChanges();
+            return true;
+        }
         private Ingredient saveIngredient(CookbookRepositoryIngredient cookbookRepositoryIngredient)
         {
             Ingredient ingredient = new Ingredient

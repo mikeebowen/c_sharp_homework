@@ -1,4 +1,5 @@
-﻿using CookbookApp.Models;
+﻿using CookBook;
+using CookbookApp.Models;
 using CookBookApp.Models;
 using System;
 using System.Collections.Generic;
@@ -24,14 +25,18 @@ namespace CookbookApp
             InitializeComponent();
         }
         public Recipe SelectedRecipe { get; set; }
+        public bool isDelete { get; set; }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             uxRecipeGrid.DataContext = SelectedRecipe;
+            uxDeleteButton.Visibility = SelectedRecipe.ID != 0 ? Visibility.Visible : Visibility.Hidden;
+            isDelete = false;
         }
 
         private void uxSaveButton_Click(object sender, RoutedEventArgs e)
         {
+            isDelete = false;
             DialogResult = true;
             Close();
         }
@@ -48,6 +53,26 @@ namespace CookbookApp
             uxNewIngredientName.Text = "";
             uxNewIngredientPrice.Text = "";
             uxNewIngredientURL.Text = "";
+        }
+
+        private void uxDeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            string title = SelectedRecipe.Title;
+            MessageBoxButton btns = MessageBoxButton.YesNo;
+            MessageBoxResult res = MessageBox.Show($"Are you sure you want to delete {title}?", "Delete?", btns);
+            if (res == MessageBoxResult.Yes)
+            {
+                App.CookBookRepository.Remove(SelectedRecipe.ToRepositoryModel());
+                MessageBox.Show($"{title} has been deleted");
+                isDelete = true;
+                DialogResult = true;
+                Close();
+            }
+        }
+
+        private void uxCancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

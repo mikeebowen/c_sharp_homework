@@ -52,10 +52,7 @@ namespace CookBook
         {
             ViewRecipeWindow viewRecipeWindow = new ViewRecipeWindow();
             viewRecipeWindow.SelectedRecipe = selectedRecipe;
-            if (viewRecipeWindow.ShowDialog() == true)
-            {
-                
-            }
+            viewRecipeWindow.ShowDialog();
         }
 
         private void uxNewRecipe_Click(object sender, RoutedEventArgs e)
@@ -76,7 +73,10 @@ namespace CookBook
             editRecipeWindow.SelectedRecipe = selectedRecipe;
             if (editRecipeWindow.ShowDialog() == true)
             {
-                App.CookBookRepository.Update(selectedRecipe.ToRepositoryModel());
+                if (editRecipeWindow.isDelete == false)
+                {
+                    App.CookBookRepository.Update(selectedRecipe.ToRepositoryModel());
+                }
                 LoadRecipes();
             }
         }
