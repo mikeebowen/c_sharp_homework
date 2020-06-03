@@ -26,8 +26,8 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0">Title:</TextBlock>
         <StackPanel Grid.Row="0" Grid.Column="1">
-            <TextBox x:Name="uxTitle" Text="{Binding Title}" Grid.Row="0" Grid.Column="1" />
-            <TextBox x:Name="uxTitleError" Text="{Binding TitleError, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBox x:Name="uxTitle" Text="{Binding Title, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Grid.Row="0" Grid.Column="1" />
+            <TextBlock x:Name="uxTitleError" Text="{Binding TitleError, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
         </StackPanel>
         <TextBlock Grid.Row="1" Grid.Column="0">Author:</TextBlock>
         <TextBox x:Name="uxAuthor" Text="{Binding Author}" Grid.Row="1" Grid.Column="1" />
@@ -72,7 +72,7 @@
         <TextBlock Grid.Row="7" Grid.Column="0" >Total Price</TextBlock>
         <TextBlock x:Name="uxTotalPrice" Text="{Binding TotalPrice, Mode=OneWay}" Grid.Row="7" Grid.Column="1" />
         <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="8">
-            <Button x:Name="uxSaveButton" Content="Save" Click="uxSaveButton_Click"/>
+            <Button x:Name="uxSaveButton" Content="Save" Click="uxSaveButton_Click" />
             <Button x:Name="uxDeleteButton" Content="Delete" Click="uxDeleteButton_Click" />
             <Button x:Name="uxCancelButton" Content="Cancel" Click="uxCancelButton_Click" />
         </StackPanel>

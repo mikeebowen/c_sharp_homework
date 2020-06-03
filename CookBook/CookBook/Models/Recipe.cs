@@ -47,7 +47,6 @@ namespace CookBookApp.Models
                     case "Title":
                         {
                             TitleError = "";
-
                             if (Title == null || string.IsNullOrEmpty(Title))
                             {
                                 TitleError = "Name cannot be empty.";
