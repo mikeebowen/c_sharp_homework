@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CookbookApp"
         mc:Ignorable="d"
-        Title="EditRecipeView" Height="450" Width="800"
+        Title="EditRecipeView" Height="Auto" Width="Auto"
         Loaded="Window_Loaded">
     
     <Grid x:Name="uxRecipeGrid">
@@ -25,11 +25,14 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0">Title:</TextBlock>
-        <TextBox x:Name="uxTitle" Text="{Binding Title}" Grid.Row="0" Grid.Column="1" />
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <TextBox x:Name="uxTitle" Text="{Binding Title}" Grid.Row="0" Grid.Column="1" />
+            <TextBox x:Name="uxTitleError" Text="{Binding TitleError, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        </StackPanel>
         <TextBlock Grid.Row="1" Grid.Column="0">Author:</TextBlock>
         <TextBox x:Name="uxAuthor" Text="{Binding Author}" Grid.Row="1" Grid.Column="1" />
         <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">Ingredients:</TextBlock>
-        <ListView x:Name="uxIngredientList" ItemsSource="{Binding Ingredients}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+        <ListView x:Name="uxIngredientList" ItemsSource="{Binding Ingredients}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Height="400" ScrollViewer.CanContentScroll="true" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Ingredient" DisplayMemberBinding="{Binding Name}" />

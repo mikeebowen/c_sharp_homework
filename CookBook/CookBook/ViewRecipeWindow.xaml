@@ -5,27 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CookbookApp"
         mc:Ignorable="d"
-        Title="ViewRecipeWindow" Height="450" Width="800"
+        Title="ViewRecipeWindow" Height="800" Width="Auto"
         Loaded="Window_Loaded">
     <Grid x:Name="uxRecipeGrid">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0">Title: </TextBlock>
         <TextBlock x:Name="uxTitle" Text="{Binding Title}" Grid.Row="0" Grid.Column="1" />
         <TextBlock Grid.Row="1" Grid.Column="0">Author: </TextBlock>
         <TextBlock x:Name="uxAuthor" Text="{Binding Author}" Grid.Row="1" Grid.Column="1" />
         <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">Ingredients:</TextBlock>
-        <ListView x:Name="uxIngredientList" ItemsSource="{Binding Ingredients}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+        <ListView x:Name="uxIngredientList" ItemsSource="{Binding Ingredients}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Height="400" ScrollViewer.CanContentScroll="true" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Ingredient" DisplayMemberBinding="{Binding Name}" />
