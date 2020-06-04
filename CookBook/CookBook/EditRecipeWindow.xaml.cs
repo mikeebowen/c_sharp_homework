@@ -51,16 +51,24 @@ namespace CookbookApp
 
         private void uxNewIngredientButton_Click(object sender, RoutedEventArgs e)
         {
-            Ingredient ingredient = new Ingredient
+            if (decimal.TryParse(uxNewIngredientPrice.Text, out decimal res))
             {
-                Name = uxNewIngredientName.Text,
-                Price = Convert.ToDecimal(uxNewIngredientPrice.Text),
-                ImageURL = uxNewIngredientURL.Text
-            };
-            SelectedRecipe.Ingredients.Add(ingredient);
-            uxNewIngredientName.Text = "";
-            uxNewIngredientPrice.Text = "";
-            uxNewIngredientURL.Text = "";
+                Ingredient ingredient = new Ingredient
+                {
+                    Name = uxNewIngredientName.Text,
+                    Price = res,
+                    ImageURL = uxNewIngredientURL.Text
+                };
+                SelectedRecipe.Ingredients.Add(ingredient);
+                uxNewIngredientName.Text = "";
+                uxNewIngredientPrice.Text = "";
+                uxNewIngredientURL.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid price", "invalid price", MessageBoxButton.OK);
+                return;
+            }
         }
 
         private void uxDeleteButton_Click(object sender, RoutedEventArgs e)
