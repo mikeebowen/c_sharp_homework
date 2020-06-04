@@ -4,6 +4,7 @@ using CookBookApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -87,6 +88,21 @@ namespace CookbookApp
         private void uxCancelButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void uxIngredientDeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            if (int.TryParse(btn.Tag.ToString(), out int id)) {
+                Ingredient ingredient = SelectedRecipe.Ingredients.Where(ing => ing.ID == id).First();
+                MessageBoxResult res = MessageBox.Show($"Are you sure you want to delete {ingredient.Name}?", "Delete", MessageBoxButton.YesNo);
+                if (res == MessageBoxResult.Yes)
+                {
+                    SelectedRecipe.Ingredients.Remove(ingredient);
+                    App.CookBookRepository.RemoveIngredient(ingredient.ID, true);
+                }
+            }
+
         }
     }
 }

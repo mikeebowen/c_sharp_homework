@@ -76,13 +76,26 @@ namespace CookbookRepository
             {
                 foreach (CookbookRepositoryIngredient ing in cookbookRepositoryRecipe.Ingredients)
                 {
-                    IQueryable<Ingredient> ingredients = DatabaseManager.Instance.Ingredient.Where(i => i.Id == ing.ID);
-                    DatabaseManager.Instance.Ingredient.Remove(ingredients.First());
+                    RemoveIngredient(ing.ID, false);
                 }
                 DatabaseManager.Instance.SaveChanges();
             }
             DatabaseManager.Instance.Recipe.Remove(recipes.First());
             DatabaseManager.Instance.SaveChanges();
+            return true;
+        }
+        public bool RemoveIngredient(int id, bool save)
+        {
+            IQueryable<Ingredient> ingredients = DatabaseManager.Instance.Ingredient.Where(ing => ing.Id == id);
+            if (ingredients.Count() == 0)
+            {
+                return false;
+            }
+            DatabaseManager.Instance.Ingredient.Remove(ingredients.First());
+            if (save)
+            {
+                DatabaseManager.Instance.SaveChanges();
+            }
             return true;
         }
         private Ingredient saveIngredient(CookbookRepositoryIngredient cookbookRepositoryIngredient)
