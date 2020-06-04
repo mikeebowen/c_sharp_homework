@@ -3,6 +3,7 @@ using CookBookApp.Models;
 using CookbookRepository;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,11 +59,10 @@ namespace CookBook
         private void uxNewRecipe_Click(object sender, RoutedEventArgs e)
         {
             EditRecipeWindow editRecipeWindow = new EditRecipeWindow();
-            Recipe recipe = new Recipe();
-            editRecipeWindow.SelectedRecipe = recipe;
+            editRecipeWindow.SelectedRecipe = new Recipe();
             if (editRecipeWindow.ShowDialog() == true)
             {
-                App.CookBookRepository.Add(selectedRecipe.ToRepositoryModel());
+                App.CookBookRepository.Add(editRecipeWindow.SelectedRecipe.ToRepositoryModel());
                 LoadRecipes();
             }
         }
