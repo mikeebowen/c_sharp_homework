@@ -37,9 +37,16 @@ namespace CookbookApp
 
         private void uxSaveButton_Click(object sender, RoutedEventArgs e)
         {
-            isDelete = false;
-            DialogResult = true;
-            Close();
+            if (uxTitleError.Text == "")
+            {
+                isDelete = false;
+                DialogResult = true;
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Please fix errors before saving.", "Errors", MessageBoxButton.OK);
+            }
         }
 
         private void uxNewIngredientButton_Click(object sender, RoutedEventArgs e)
@@ -58,13 +65,11 @@ namespace CookbookApp
 
         private void uxDeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            string title = SelectedRecipe.Title;
-            MessageBoxButton btns = MessageBoxButton.YesNo;
-            MessageBoxResult res = MessageBox.Show($"Are you sure you want to delete {title}?", "Delete?", btns);
+            MessageBoxResult res = MessageBox.Show($"Are you sure you want to delete {SelectedRecipe.Title}?", "Delete?", MessageBoxButton.YesNo);
             if (res == MessageBoxResult.Yes)
             {
                 App.CookBookRepository.Remove(SelectedRecipe.ToRepositoryModel());
-                MessageBox.Show($"{title} has been deleted");
+                MessageBox.Show($"{SelectedRecipe.Title} has been deleted");
                 isDelete = true;
                 DialogResult = true;
                 Close();
