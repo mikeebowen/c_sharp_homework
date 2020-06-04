@@ -25,6 +25,7 @@ namespace CookBook
     public partial class MainWindow : Window
     {
         private Recipe selectedRecipe;
+        private GridViewColumnHeader selectedRow = null;
         public MainWindow()
         {
             InitializeComponent();
@@ -79,6 +80,25 @@ namespace CookBook
                 }
                 LoadRecipes();
             }
+        }
+
+        private void uxNameHeader_Click(object sender, RoutedEventArgs e)
+        {
+            sortRows(sender);
+        }
+
+        private void uxAuthorHeader_Click(object sender, RoutedEventArgs e)
+        {
+            sortRows(sender);
+        }
+        private void sortRows(object sender)
+        {
+            GridViewColumnHeader header = (sender as GridViewColumnHeader);
+            string sortBy = header.Tag.ToString();
+            ListSortDirection newDir = selectedRow == header && uxListView.Items.SortDescriptions.LastOrDefault().Direction == ListSortDirection.Ascending ? ListSortDirection.Descending : ListSortDirection.Ascending;
+            selectedRow = header;
+            uxListView.Items.SortDescriptions.Clear();
+            uxListView.Items.SortDescriptions.Add(new SortDescription(sortBy, newDir));
         }
     }
 }

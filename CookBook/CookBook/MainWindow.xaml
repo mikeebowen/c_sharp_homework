@@ -15,14 +15,14 @@
         <ListView x:Name="uxListView" SelectionChanged="uxListView_SelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Title}" Width="100">
+                    <GridViewColumn DisplayMemberBinding="{Binding Title}" Width="200">
                         <GridViewColumn.Header>
-                            Name
+                            <GridViewColumnHeader x:Name="uxNameHeader" Tag="Title" Click="uxNameHeader_Click" Content="Title" />
                         </GridViewColumn.Header>
                     </GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Author}" Width="100">
+                    <GridViewColumn DisplayMemberBinding="{Binding Author}" Width="200">
                         <GridViewColumn.Header>
-                            Author
+                            <GridViewColumnHeader x:Name="uxAuthorHeader" Tag="Author" Click="uxAuthorHeader_Click" Content="Author" />
                         </GridViewColumn.Header>
                     </GridViewColumn>
                 </GridView>
