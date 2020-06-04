@@ -32,6 +32,7 @@ namespace CookBookApp.Models
             }
         }
         private string titleError { get; set; }
+        private string authorError { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
         {
@@ -54,6 +55,16 @@ namespace CookBookApp.Models
 
                             return TitleError;
                         }
+                    case "Author":
+                        {
+                            AuthorError = "";
+                            if (Author == null || string.IsNullOrEmpty(Author))
+                            {
+                                AuthorError = "Author cannot be empty.";
+                            }
+
+                            return AuthorError;
+                        }
                 }
 
                 return null;
@@ -71,6 +82,21 @@ namespace CookBookApp.Models
                 {
                     titleError = value;
                     OnPropertyChanged("TitleError");
+                }
+            }
+        }
+        public string AuthorError
+        {
+            get
+            {
+                return authorError;
+            }
+            set
+            {
+                if (authorError != value)
+                {
+                    authorError = value;
+                    OnPropertyChanged("AuthorError");
                 }
             }
         }

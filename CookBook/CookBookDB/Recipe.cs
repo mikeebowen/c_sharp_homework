@@ -21,7 +21,6 @@ namespace CookbookDB
         [Required]
         [StringLength(100)]
         public string Author { get; set; }
-        [Required]
         public string Directions { get; set; }
         [Column("ImageURL")]
         [StringLength(2083)]
