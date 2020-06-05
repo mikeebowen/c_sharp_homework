@@ -1,0 +1,88 @@
+﻿
+@model BirthdayCard.Models.BirthdayMessage
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="card w-100">
+                <div class="card-header">
+                    Birthday Card Generator
+                </div>
+                @if (Model == null)
+                {
+                    <div class="row">
+                        <div class="col-12">
+                            <h1 class="text-center">Send a Birthday Card</h1>
+                        </div>
+                    </div>
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <form class="mt-2" asp-action="Index">
+                        <div class="form-group row">
+                            <label asp-for="From" for="From" class="col-sm-2 col-form-label col-form-label-lg">From:</label>
+                            <div class="col-sm-10">
+                                <input asp-for="From" type="text" class="form-control form-control-lg" id="From">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="To" for="To" class="col-sm-2 col-form-label col-form-label-lg">To:</label>
+                            <div class="col-sm-10">
+                                <input asp-for="To" type="text" class="form-control form-control-lg" id="To">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="Message" for="Message" class="col-sm-2 col-form-label col-form-label-lg">Message:</label>
+                            <div class="col-sm-10">
+                                <input asp-for="Message" type="text" class="form-control form-control-lg" id="Message">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                        <input name="__RequestVerificationToken" type="hidden" value="...." />
+                    </form>
+                }
+                else
+                {
+            <div class="row">
+                <div class="col-2">
+                    From:
+                </div>
+                <div class="col-10">
+                    @Model.From
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    To:
+                </div>
+                <div class="col-10">
+                    @Model.To
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    Message:
+                </div>
+                <div class="col-10">
+                    @Model.Message
+                </div>
+            </div>
+                    <form>
+                        <button class="btn btn-outline-primary" asp-action="Index">Send Another</button>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>

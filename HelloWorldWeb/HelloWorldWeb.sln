@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorldWeb", "HelloWorldWeb\HelloWorldWeb.csproj", "{6C1BF5D3-C2D0-43DD-963E-85D6E8C91B57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FullMVCSite", "FullMVCSite\FullMVCSite.csproj", "{BA4CC705-ABA8-4F22-A2D0-1F01F10EECF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FullMVCSite", "FullMVCSite\FullMVCSite.csproj", "{BA4CC705-ABA8-4F22-A2D0-1F01F10EECF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BirthdayCard", "BirthdayCard\BirthdayCard.csproj", "{C23CF452-7611-41F5-AD82-8BB8FF445198}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{BA4CC705-ABA8-4F22-A2D0-1F01F10EECF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA4CC705-ABA8-4F22-A2D0-1F01F10EECF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA4CC705-ABA8-4F22-A2D0-1F01F10EECF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C23CF452-7611-41F5-AD82-8BB8FF445198}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C23CF452-7611-41F5-AD82-8BB8FF445198}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C23CF452-7611-41F5-AD82-8BB8FF445198}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C23CF452-7611-41F5-AD82-8BB8FF445198}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
